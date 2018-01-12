@@ -1,13 +1,19 @@
 package net.radu.Frontend.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.radu.Backend.dao.EventDAO;
+
 @Controller
 public class PageController {
+	
+	@Autowired
+	private EventDAO eventDAO;
 	
 	@RequestMapping(value = {"/", "/home", "/index"})
 	public ModelAndView index(){
@@ -29,6 +35,8 @@ public class PageController {
 	public ModelAndView reportedEvents(){
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title","Reported Events");
+		//passing the list of events
+		mv.addObject("events", eventDAO.lsit());
 		mv.addObject("userClickReportedEvents",true);
 		return mv;
 	}

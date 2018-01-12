@@ -1,6 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-	<div class="container">
+	
 		<div class="navbar-header page-scroll">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target=".navbar-main-collapse">
@@ -41,6 +41,6 @@
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
-	</div>
+	
 	<!-- /.container -->
 </nav>

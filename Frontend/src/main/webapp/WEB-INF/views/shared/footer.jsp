@@ -1,5 +1,5 @@
 <footer>
-		<div class="container">
+
 			<div class="row">
 				<div class="col-lg-12">
 					<ul class="list-inline">
@@ -14,5 +14,5 @@
 					<p class="copyright text-muted small">Copyright &copy; QuickEvent Technology 2018. All Rights Reserved</p>
 				</div>
 			</div>
-		</div>
+
 	</footer>

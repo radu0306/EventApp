@@ -43,12 +43,12 @@
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
 
-	<div class="wrapper">
+	
 		<!-- NAVBAR  -->
 		<%@include file="./shared/navbar.jsp"%>
 
 		<!-- PAGE CONTENT  -->
-		<div class="content">
+		
 		
 			<c:if test="${userClickHome == true }">
 				<%@include file="./home.jsp"%>
@@ -80,10 +80,12 @@
 
 			<!-- Custom Theme JavaScript -->
 			<script src="${js}/grayscale.js"></script>
-		</div>
+			
+		<!-- Custom table theme -->
+			<script src="${js}/table.js"></script>
 		<!-- FOOTER -->
 		<%@include file="./shared/footer.jsp"%>
-	</div>
+	
 </body>
 
 </html>
