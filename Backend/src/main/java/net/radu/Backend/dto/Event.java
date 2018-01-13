@@ -2,9 +2,22 @@ package net.radu.Backend.dto;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.springframework.stereotype.Component;
+
+@Component
+@Entity
 public class Event {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int eventId;
+	@Column(name = "UID")
 	private int uId;
 	private String name;
 	private String description;
@@ -46,5 +59,10 @@ public class Event {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	@Override
+	public String toString() {
+		return "Event [eventId=" + eventId + ", uId=" + uId + ", name=" + name + ", description=" + description
+				+ ", tag=" + tag + ", date=" + date + "]";
 	}
 }

@@ -4,17 +4,28 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import net.radu.Backend.dao.EventDAO;
 import net.radu.Backend.dto.Event;
 
+@SuppressWarnings("deprecation")
 @Repository("eventDAO")
 public class EventDAOImpl implements EventDAO {
 
+	@Autowired
+	private SessionFactory sessionFactory;
+
 	private static List<Event> events = new ArrayList<>();
-	
-	static{
+
+/*	static {
 		Event event = new Event();
 		event.setEventId(1);
 		event.setuId(1);
@@ -23,7 +34,7 @@ public class EventDAOImpl implements EventDAO {
 		event.setTag("Natural_Disaster");
 		event.setDate(new Date(2017, 12, 12, 13, 01));
 		events.add(event);
-		
+
 		event = new Event();
 		event.setEventId(2);
 		event.setuId(2);
@@ -32,7 +43,7 @@ public class EventDAOImpl implements EventDAO {
 		event.setTag("Natural_Disaster");
 		event.setDate(new Date(2017, 12, 12, 13, 02));
 		events.add(event);
-		
+
 		event = new Event();
 		event.setEventId(3);
 		event.setuId(3);
@@ -41,7 +52,7 @@ public class EventDAOImpl implements EventDAO {
 		event.setTag("Terrorist_Act");
 		event.setDate(new Date(2017, 12, 12, 13, 03));
 		events.add(event);
-		
+
 		event = new Event();
 		event.setEventId(4);
 		event.setuId(4);
@@ -50,11 +61,52 @@ public class EventDAOImpl implements EventDAO {
 		event.setTag("Accident");
 		event.setDate(new Date(2017, 12, 12, 13, 04));
 		events.add(event);
-	}
-	
+	}*/
+
 	@Override
 	public List<Event> lsit() {
-		return events;
+		String selectEvent = "FROM Event WHERE tag = :tag";
+
+		Query query = sessionFactory.getCurrentSession().createQuery(selectEvent);
+
+		query.setParameter("tag", "Natural_Disaster");
+
+		return query.getResultList();
+
+
+	}
+
+	@Override
+	public Event get(int id) {
+		for (Event event : events) {
+			if (event.getEventId() == id)
+				return event;
+		}
+
+		return null;
+	}
+
+	// add an event to the Even table
+	@Override
+	@Transactional
+	public boolean add(Event event) {
+		try {
+			// Configuration con = new Configuration();
+			// con.configure("hibernate.cfg.xml");
+			// SessionFactory sessionF = con.buildSessionFactory();
+			// Session session = sessionF.openSession();
+			// Transaction tr = session.beginTransaction();
+			// session.save(event);
+			// tr.commit();
+			// session.close();
+			// sessionF.close();
+			sessionFactory.getCurrentSession().persist(event);
+			return true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+
 	}
 
 }
