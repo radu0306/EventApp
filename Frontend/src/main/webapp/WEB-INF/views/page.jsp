@@ -37,7 +37,7 @@
 	rel='stylesheet' type='text/css'>
 
 <!-- Custom Theme CSS -->
-<link href="${css}/myapp.css" rel="stylesheet">
+<link href="${css}/greyscale.css" rel="stylesheet">
 
 </head>
 
@@ -78,6 +78,9 @@
 
 	<!-- Custom Theme JavaScript -->
 	<script src="${js}/grayscale.js"></script>
+	
+		<!-- Custom Theme JavaScript -->
+	<script src="${js}/table.js"></script>
 
 
 	<!-- FOOTER -->

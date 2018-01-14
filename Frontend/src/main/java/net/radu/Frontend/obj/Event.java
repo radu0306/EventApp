@@ -10,106 +10,224 @@ import org.springframework.stereotype.Repository;
 public class Event {
 
 	private int eventId;
-	private int uId;
-	private String name;
+	private String userFirstName;
+	private String userLastName;
+	private String email;
+	private String eventName;
+	private String country;
+	private String city;
 	private String description;
 	private String tag;
+	private int allertCode;
 	private Date date;
 
 	private static List<Event> events = new ArrayList<>();
+
+
+
 
 	public int getEventId() {
 		return eventId;
 	}
 
+
+
 	public void setEventId(int eventId) {
 		this.eventId = eventId;
 	}
 
-	public int getuId() {
-		return uId;
+
+
+	public String getUserFirstName() {
+		return userFirstName;
 	}
 
-	public void setuId(int uId) {
-		this.uId = uId;
+
+
+	public void setUserFirstName(String userFirstName) {
+		this.userFirstName = userFirstName;
 	}
 
-	public String getName() {
-		return name;
+
+
+	public String getUserLastName() {
+		return userLastName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+
+
+	public void setUserLastName(String userLastName) {
+		this.userLastName = userLastName;
 	}
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	public String getEventName() {
+		return eventName;
+	}
+
+
+
+	public void setEventName(String eventName) {
+		this.eventName = eventName;
+	}
+
+
+
+	public String getCountry() {
+		return country;
+	}
+
+
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+
+
+	public String getCity() {
+		return city;
+	}
+
+
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+
 
 	public String getDescription() {
 		return description;
 	}
 
+
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+
 
 	public String getTag() {
 		return tag;
 	}
 
+
+
 	public void setTag(String tag) {
 		this.tag = tag;
 	}
+
+
+
+	public int getAllertCode() {
+		return allertCode;
+	}
+
+
+
+	public void setAllertCode(int allertCode) {
+		this.allertCode = allertCode;
+	}
+
+
 
 	public Date getDate() {
 		return date;
 	}
 
+
+
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
-	@Override
-	public String toString() {
-		return "Event [eventId=" + eventId + ", uId=" + uId + ", name=" + name + ", description=" + description
-				+ ", tag=" + tag + ", date=" + date + "]";
-	}
+
+	
 
 	public List<Event> list() {
 
 		Event event = new Event();
 		event.setEventId(1);
-		event.setuId(1);
-		event.setDescription("eveniment 1");
-		event.setName("test1");
-		event.setTag("Natural_Disaster");
+		event.setUserFirstName("Alex");
+		event.setUserLastName("Pana");
+		event.setEmail("alex@gmail.com");
+		event.setDescription("Near Gara de nord an apartment flat is burning");
+		event.setEventName("Fire");
+		event.setTag("Accident");
+		event.setCountry("Romania");
+		event.setCity("Bucharest");
+		event.setAllertCode(1);
 		event.setDate(new Date(2017, 12, 12, 13, 01));
 		events.add(event);
 
 		event = new Event();
 		event.setEventId(2);
-		event.setuId(2);
-		event.setDescription("eveniment 2");
-		event.setName("test2");
+		event.setUserFirstName("Radu");
+		event.setUserLastName("Negoita");
+		event.setEmail("negolas@gmail.com");
+		event.setDescription("Avalanche that destroyed 2 houses in Paltinis");
+		event.setEventName("Avalanche");
 		event.setTag("Natural_Disaster");
-		event.setDate(new Date(2017, 12, 12, 13, 02));
+		event.setCountry("Romania");
+		event.setCity("Paltinis");
+		event.setAllertCode(2);
+		event.setDate(new Date(2017, 12, 29, 17, 00));
 		events.add(event);
 
 		event = new Event();
 		event.setEventId(3);
-		event.setuId(3);
-		event.setDescription("eveniment 3");
-		event.setName("test3");
-		event.setTag("Terrorist_Act");
-		event.setDate(new Date(2017, 12, 12, 13, 03));
+		event.setUserFirstName("Ivan");
+		event.setUserLastName("Molotv");
+		event.setEmail("ivan@gmail.com");
+		event.setDescription("Earthquake that collapsed a few buildings in Volgograd");
+		event.setEventName("Earthquacke");
+		event.setTag("Natural_Disaster");
+		event.setCountry("Russia");
+		event.setCity("Volgograd");
+		event.setAllertCode(3);
+		event.setDate(new Date(2016, 04, 30, 06, 48));
 		events.add(event);
 
 		event = new Event();
 		event.setEventId(4);
-		event.setuId(4);
-		event.setDescription("eveniment4 ");
-		event.setName("test4");
-		event.setTag("Accident");
-		event.setDate(new Date(2017, 12, 12, 13, 04));
+		event.setUserFirstName("Lebron");
+		event.setUserLastName("James");
+		event.setEmail("lj@gmail.com");
+		event.setDescription("2 planes just crashed in World Trade Center");
+		event.setEventName("Possibly terrorist atack");
+		event.setTag("Terrorist_Act");
+		event.setCountry("USA");
+		event.setCity("New York");
+		event.setAllertCode(3);
+		event.setDate(new Date(2001, 9, 11, 10, 28));
 		events.add(event);
 
+
 		return events;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Event [eventId=" + eventId + ", userFirstName=" + userFirstName + ", userLastName=" + userLastName
+				+ ", email=" + email + ", eventName=" + eventName + ", country=" + country + ", city=" + city
+				+ ", description=" + description + ", tag=" + tag + ", allertCode=" + allertCode + ", date=" + date
+				+ "]";
 	}
 }

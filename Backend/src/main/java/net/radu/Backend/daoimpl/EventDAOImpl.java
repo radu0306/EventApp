@@ -16,91 +16,141 @@ import org.springframework.transaction.annotation.Transactional;
 import net.radu.Backend.config.HibernateUtil;
 import net.radu.Backend.dao.EventDAO;
 import net.radu.Backend.dto.Event;
-
+import net.radu.Backend.dto.User;
 
 @Repository("eventDAO")
 public class EventDAOImpl implements EventDAO {
 
 	@Autowired
-	private SessionFactory sessionFactory;
+	SessionFactory sessionFactory = HibernateUtil.getSessionAnnotationFactory();
 
 	private static List<Event> events = new ArrayList<>();
 
-	
-	  static { Event event = new Event(); event.setEventId(1); event.setuId(1);
-	  event.setDescription("eveniment 1"); event.setName("test1");
-	  event.setTag("Natural_Disaster"); event.setDate(new Date(2017, 12, 12,
-	  13, 01)); events.add(event);
-	  
-	  event = new Event(); event.setEventId(2); event.setuId(2);
-	  event.setDescription("eveniment 2"); event.setName("test2");
-	  event.setTag("Natural_Disaster"); event.setDate(new Date(2017, 12, 12,
-	  13, 02)); events.add(event);
-	  
-	  event = new Event(); event.setEventId(3); event.setuId(3);
-	  event.setDescription("eveniment 3"); event.setName("test3");
-	  event.setTag("Terrorist_Act"); event.setDate(new Date(2017, 12, 12, 13,
-	  03)); events.add(event);
-	  
-	  event = new Event(); event.setEventId(4); event.setuId(4);
-	 event.setDescription("eveniment4 "); event.setName("test4");
-	  event.setTag("Accident"); event.setDate(new Date(2017, 12, 12, 13, 04));
-	  events.add(event); }
-	 
-
+	// geting all events from database
 	@Override
 	public List<Event> list() {
 
-//		SessionFactory sessionFactory = HibernateUtil.getSessionAnnotationFactory();
-//		Session session = sessionFactory.getCurrentSession();
-//		
-//		// start transaction
-//		session.beginTransaction();
-//
-//		String selectEvent = "FROM Event";
-//
-//		Query query = sessionFactory.getCurrentSession().createQuery(selectEvent);
-//
-//		List<Event> events = query.list();
-//		System.out.println(events);
-//
-//		// terminate session factory, otherwise program won't end
-//		sessionFactory.close();
+		Session session = sessionFactory.getCurrentSession();
+
+		// start transaction
+		session.beginTransaction();
+
+		String selectEvent = "FROM Event";
+
+		Query query = sessionFactory.getCurrentSession().createQuery(selectEvent);
+
+		events = query.list();
+		System.out.println(events);
+
+		sessionFactory.close();
 		return events;
 
 	}
 
+	// geting a single event
 	@Override
 	public Event get(int id) {
-		for (Event event : events) {
-			if (event.getEventId() == id)
-				return event;
-		}
+		Session session = sessionFactory.getCurrentSession();
+		// start transaction
+		session.beginTransaction();
 
-		return null;
+		Event event = new Event();
+		event = (Event) session.get(Event.class, Integer.valueOf(id));
+		return event;
 	}
 
 	// add an event to the Even table
 	@Override
-	@Transactional
+
 	public boolean add(Event event) {
+
+		// checking if user doesn't already exist
+		UserDAOImpl userTmp = new UserDAOImpl();
+		if (userTmp.getByEmail(event.getEmail()) == null) {
+			// adding user
+			User user = new User();
+			user.setFirstName(event.getUserFirstName());
+			user.setLastName(event.getUserLastName());
+			user.setEmail(event.getEmail());
+			userTmp.add(user);
+
+			try {
+				// adding event
+				Session session = sessionFactory.getCurrentSession();
+				// start transaction
+				session.beginTransaction();
+
+				// Saving the object
+				session.save(event);
+				// Commit transaction
+				session.getTransaction().commit();
+				sessionFactory.close();
+				return true;
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				return false;
+			}
+
+		} 
+		//adding only the event, user already existing in database
+		else {
+			try {
+				Session session = sessionFactory.getCurrentSession();
+				// start transaction
+				session.beginTransaction();
+
+				// Saving the object
+				session.save(event);
+				// Commit transaction
+				session.getTransaction().commit();
+				sessionFactory.close();
+				return true;
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				return false;
+			}
+
+		}
+	}
+
+	// updating a certain event
+	@Override
+	public boolean update(Event event) {
 		try {
-			// Configuration con = new Configuration();
-			// con.configure("hibernate.cfg.xml");
-			// SessionFactory sessionF = con.buildSessionFactory();
-			// Session session = sessionF.openSession();
-			// Transaction tr = session.beginTransaction();
-			// session.save(event);
-			// tr.commit();
-			// session.close();
-			// sessionF.close();
-			sessionFactory.getCurrentSession().persist(event);
+			Session session = sessionFactory.getCurrentSession();
+			// start transaction
+			session.beginTransaction();
+
+			// Saving the object
+			session.update(event);
+			// Commit transaction
+			session.getTransaction().commit();
+			sessionFactory.close();
 			return true;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return false;
 		}
+	}
 
+	// Deleting a certain event
+	@Override
+	public boolean delete(Event event) {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			// start transaction
+			session.beginTransaction();
+
+			// Saving the object
+			session.delete(event);
+			// Commit transaction
+			session.getTransaction().commit();
+			sessionFactory.close();
+			return true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
 	}
 
 }

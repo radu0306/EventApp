@@ -56,14 +56,14 @@
 
 	<div class="container">
 
-		<form class="well form-horizontal" action=" " method="post"
+		<form class="well form-horizontal" action=" ${pageContext.request.contextPath}/myservlet" method="post"
 			id="contact_form">
 			<fieldset>
 
 				<!-- Form Name -->
 				<legend>Report an Event</legend>
 
-				<!-- Text input-->
+				<!-- User first name-->
 
 				<div class="form-group">
 					<label class="col-md-4 control-label">First Name</label>
@@ -76,7 +76,7 @@
 					</div>
 				</div>
 
-				<!-- Text input-->
+				<!-- User last name-->
 
 				<div class="form-group">
 					<label class="col-md-4 control-label">Last Name</label>
@@ -89,7 +89,7 @@
 					</div>
 				</div>
 
-				<!-- Text input-->
+				<!-- user email-->
 				<div class="form-group">
 					<label class="col-md-4 control-label">E-Mail</label>
 					<div class="col-md-4 inputGroupContainer">
@@ -102,7 +102,7 @@
 				</div>
 
 
-				<!-- Text input-->
+				<!-- Event name-->
 
 				<div class="form-group">
 					<label class="col-md-4 control-label">Event name</label>
@@ -117,7 +117,7 @@
 				</div>
 
 
-				<!-- Select Basic -->
+				<!-- Country -->
 
 				<div class="form-group">
 					<label class="col-md-4 control-label">Country</label>
@@ -334,7 +334,7 @@
 				</div>
 
 
-				<!-- Text input-->
+				<!-- City-->
 
 				<div class="form-group">
 					<label class="col-md-4 control-label">City</label>
@@ -347,7 +347,7 @@
 					</div>
 				</div>
 
-				<!-- Text input-->
+				<!-- Clasification of event-->
 
 				<div class="form-group">
 					<label class="col-md-4 control-label">Classification</label>
@@ -367,7 +367,7 @@
 
 
 
-				<!-- radio checks -->
+				<!-- allert code -->
 				<div class="form-group">
 					<label class="col-md-4 control-label">Alert code</label>
 					<div class="col-md-4">
@@ -389,7 +389,7 @@
 					</div>
 				</div>
 
-				<!-- Text area -->
+				<!-- Event Description -->
 
 				<div class="form-group">
 					<label class="col-md-4 control-label">Description</label>
@@ -403,7 +403,7 @@
 					</div>
 				</div>
 
-				<!-- Pic imput-->
+				<!--Uploadinc picture-->
 
 				<div class="form-group">
 					<label class="col-md-4 control-label">Upload relevant
@@ -418,16 +418,19 @@
 
 				<div id="map" style="height: 500px;"></div>
 
-				<!-- Button -->
+				<!-- registering event and sending email -->
+				
 				<div class="form-group button">
 					<label class="col-md-5 control-label"></label>
 					<div class="col-md-4" style="padding-bottom: 50px;">
-						<button type="submit" class="btn btn-warning"
+					
+						<button type="submit" name="button" value="sendEmail" class="btn btn-warning"
 							onclick="document.forms[0].action = '/Frontend'; return true;">
 							Send <span class="glyphicon glyphicon-send"></span>
 						</button>
 					</div>
 				</div>
+				                  
 			</fieldset>
 		</form>
 	</div>

@@ -24,12 +24,33 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Mail -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
 		<!-- SPRING MVC -->
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.textmagic.sdk</groupId>
+			<artifactId>textmagic-java-sdk</artifactId>
+			<version>1.2.0</version>
 		</dependency>
 	</dependencies>
 </project>

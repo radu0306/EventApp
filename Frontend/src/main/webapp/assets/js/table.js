@@ -1,12 +1,5 @@
 $(document).ready(function () {
 
-	$('.star').on('click', function () {
-      $(this).toggleClass('star-checked');
-    });
-
-    $('.ckbox label').on('click', function () {
-      $(this).parents('tr').toggleClass('selected');
-    });
 
     $('.btn-filter').on('click', function () {
       var $target = $(this).data('target');
@@ -17,5 +10,14 @@ $(document).ready(function () {
         $('.table tr').css('display', 'none').fadeIn('slow');
       }
     });
+    
+	var seen = {};
+	$('table tr').each(function() {
+		var txt = $(this).text();
+		if (seen[txt])
+			$(this).remove();
+		else
+			seen[txt] = true;
+	});
 
  });

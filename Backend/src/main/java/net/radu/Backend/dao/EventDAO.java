@@ -10,8 +10,8 @@ import net.radu.Backend.dto.Event;
 public interface EventDAO {
 
 	boolean add(Event event);
-	
-	List<Event> list();
 	Event get(int id);
-	
+	boolean update(Event event);
+	boolean delete(Event event);
+	List<Event> list();
 }
