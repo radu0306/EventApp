@@ -62,9 +62,7 @@
 				<li><a href="${contextRoot}/reportedEvents"
 					class="btn btn-default btn-lg"><span class="network-name">Reported Events</span></a>
 				</li>
-				<li><a href="https://plus.google.com/+Startbootstrap/posts"
-					class="btn btn-default btn-lg"> <span class="network-name">Google+</span></a>
-				</li>
+				
 			</ul>
 		</div>
 	</div>

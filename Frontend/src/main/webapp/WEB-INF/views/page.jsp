@@ -43,49 +43,46 @@
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
 
+
+	<!-- NAVBAR  -->
+	<%@include file="./shared/navbar.jsp"%>
+
+	<!-- PAGE CONTENT  -->
+
+
+	<c:if test="${userClickHome == true }">
+		<%@include file="./home.jsp"%>
+	</c:if>
+
+	<!-- Load only when clicked report -->
+	<c:if test="${userClickReport == true }">
+		<%@include file="./report.jsp"%>
+	</c:if>
+
+	<!-- Load only when clicked reportedEvents -->
+	<c:if test="${userClickReportedEvents == true }">
+		<%@include file="./reportedEvents.jsp"%>
+	</c:if>
+
+	<!-- <div id="map"></div> -->
+
+	<!-- Core JavaScript Files -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script
+		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script
+		src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
 	
-		<!-- NAVBAR  -->
-		<%@include file="./shared/navbar.jsp"%>
 
-		<!-- PAGE CONTENT  -->
-		
-		
-			<c:if test="${userClickHome == true }">
-				<%@include file="./home.jsp"%>
-			</c:if>
+	<!-- Custom Theme JavaScript -->
+	<script src="${js}/grayscale.js"></script>
 
-			<!-- Load only when clicked report -->
-			<c:if test="${userClickReport == true }">
-				<%@include file="./report.jsp"%>
-			</c:if>
 
-			<!-- Load only when clicked reportedEvents -->
-			<c:if test="${userClickReportedEvents == true }">
-				<%@include file="./reportedEvents.jsp"%>
-			</c:if>
+	<!-- FOOTER -->
+	<%@include file="./shared/footer.jsp"%>
 
-			<!-- <div id="map"></div> -->
-
-			<!-- Core JavaScript Files -->
-			<script
-				src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-			<script
-				src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-			<script
-				src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-			<!-- Google Maps API Key - You will need to use your own API key to use the map feature -->
-			<script type="text/javascript"
-				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
-
-			<!-- Custom Theme JavaScript -->
-			<script src="${js}/grayscale.js"></script>
-			
-		<!-- Custom table theme -->
-			<script src="${js}/table.js"></script>
-		<!-- FOOTER -->
-		<%@include file="./shared/footer.jsp"%>
-	
 </body>
 
 </html>

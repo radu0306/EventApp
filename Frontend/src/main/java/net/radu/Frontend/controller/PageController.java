@@ -1,5 +1,7 @@
 package net.radu.Frontend.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,13 +9,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import net.radu.Backend.dao.EventDAO;
+import net.radu.Frontend.obj.Event;
+
+
+
+//import net.radu.Backend2.dao.EvenimentDAO;
+
 
 @Controller
 public class PageController {
+
+	
+//	private EvenimentDAO evenimentDAO;
 	
 	@Autowired
-	private EventDAO eventDAO;
+	 private Event event;
 	
 	@RequestMapping(value = {"/", "/home", "/index"})
 	public ModelAndView index(){
@@ -25,7 +35,7 @@ public class PageController {
 	
 	@RequestMapping(value = "/report")
 	public ModelAndView report(){
-		ModelAndView mv = new ModelAndView("page");
+		ModelAndView mv = new ModelAndView("report");
 		mv.addObject("title","Report");
 		mv.addObject("userClickReport",true);
 		return mv;
@@ -35,8 +45,10 @@ public class PageController {
 	public ModelAndView reportedEvents(){
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title","Reported Events");
-		//passing the list of events
-		mv.addObject("events", eventDAO.lsit());
+		
+		mv.addObject("events", event.list());
+
+		
 		mv.addObject("userClickReportedEvents",true);
 		return mv;
 	}

@@ -11,7 +11,7 @@ public interface EventDAO {
 
 	boolean add(Event event);
 	
-	List<Event> lsit();
+	List<Event> list();
 	Event get(int id);
 	
 }

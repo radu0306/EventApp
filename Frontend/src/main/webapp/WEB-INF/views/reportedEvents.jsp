@@ -25,6 +25,7 @@
 							<table class="table table-filter">
 								<tbody>
 
+
 									<c:forEach items="${events}" var="event">
 										<tr data-status="${event.tag}">
 											<td>
