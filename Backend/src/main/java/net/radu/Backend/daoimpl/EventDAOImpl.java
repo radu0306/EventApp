@@ -26,6 +26,8 @@ public class EventDAOImpl implements EventDAO {
 
 	private static List<Event> events = new ArrayList<>();
 
+
+	
 	// geting all events from database
 	@Override
 	public List<Event> list() {

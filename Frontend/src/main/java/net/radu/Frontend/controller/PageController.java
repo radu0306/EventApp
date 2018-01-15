@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+//import net.radu.Backend.dao.EventDAO;
 import net.radu.Frontend.obj.Event;
 
 
@@ -19,8 +20,8 @@ import net.radu.Frontend.obj.Event;
 @Controller
 public class PageController {
 
-	
-//	private EvenimentDAO evenimentDAO;
+//	@Autowired
+//	private EventDAO evenimentDAO;
 	
 	@Autowired
 	 private Event event;

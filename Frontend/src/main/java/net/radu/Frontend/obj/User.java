@@ -1,4 +1,4 @@
-package net.radu.Backend.dto;
+package net.radu.Frontend.obj;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

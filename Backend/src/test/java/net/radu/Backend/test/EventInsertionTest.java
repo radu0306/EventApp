@@ -19,17 +19,17 @@ public class EventInsertionTest {
 		Event event = new Event();
 
 		// Data set to test database conectivity
-//		event.setEventId(1);
-//		 event.setUserFirstName("Alex");
-//		 event.setUserLastName("Pana");
-//		 event.setEmail("alex@gmail.com");
-//		 event.setDescription("Near Gara de nord an apartment flat is burning");
-//		 event.setEventName("Fire");
-//		 event.setTag("Accident");
-//		 event.setCountry("Romania");
-//		 event.setCity("Bucharest");
-//		 event.setAllertCode(1);
-//		 event.setDate(new Date(2017, 12, 12, 13, 01));
+		event.setEventId(1);
+		 event.setUserFirstName("Alexandru");
+		 event.setUserLastName("Vintila");
+		 event.setEmail("alexandru.v@gmail.com");
+		 event.setDescription("A group of armed men are holding hostages in gara de nord");
+		 event.setEventName("Hostage situation");
+		 event.setTag("Terrorist_Act");
+		 event.setCountry("Romania");
+		 event.setCity("Bucharest");
+		 event.setAllertCode(3);
+		 event.setDate(new Date(2018, 1, 10, 13, 01));
 //		 events.add(event);
 		//
 //		 event = new Event();
@@ -62,16 +62,16 @@ public class EventInsertionTest {
 		//
 //		 event = new Event();
 //		 event.setEventId(4);
-//		 event.setUserFirstName("Homer");
-//		 event.setUserLastName("Odiseos");
-//		 event.setEmail("homer.odi@gmail.com");
-//		 event.setDescription("huge tsunami just hit the north coast of corfu");
-//		 event.setEventName("Tsunami");
-//		 event.setTag("Natural_Disaster");
-//		 event.setCountry("Greece");
-//		 event.setCity("Corfu");
-//		 event.setAllertCode(2);
-//		 event.setDate(new Date(2011, 12, 1, 22, 20));
+//		 event.setUserFirstName("Matei");
+//		 event.setUserLastName("Panaitescu");
+//		 event.setEmail("matei@gmail.com");
+//		 event.setDescription("accident involvin huge number of cars on A1");
+//		 event.setEventName("Accident");
+//		 event.setTag("Accident");
+//		 event.setCountry("Romania");
+//		 event.setCity("Near Pitesti");
+//		 event.setAllertCode(1);
+//		 event.setDate(new Date(2016, 06, 3, 10, 27));
 		// events.add(event);
 
 		//
@@ -81,21 +81,21 @@ public class EventInsertionTest {
 		// Table insertion
 		// Get Session
 		// start transaction
-//		 session.beginTransaction();
+		 session.beginTransaction();
 		// Save the Model object
-//		 session.save(event);
+		 session.save(event);
 		// //Commit transaction
-//		 session.getTransaction().commit();
-//		 System.out.println("Event ID="+event.getEventId());
+		 session.getTransaction().commit();
+		 System.out.println("Event ID="+event.getEventId());
 
 		// Table extraction
 
 		// start transaction
-		session.beginTransaction();
-		String selectEvent = "FROM Event";//
-		Query query = sessionFactory.getCurrentSession().createQuery(selectEvent);
-		events = query.list();
-		System.out.println("Rezultat extragere= " + events);
+//		session.beginTransaction();
+//		String selectEvent = "FROM Event";//
+//		Query query = sessionFactory.getCurrentSession().createQuery(selectEvent);
+//		events = query.list();
+//		System.out.println("Rezultat extragere= " + events);
 
 		sessionFactory.close();
 	}

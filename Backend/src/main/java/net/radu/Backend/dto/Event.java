@@ -8,8 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "event")
@@ -31,6 +33,10 @@ public class Event {
 	private int allertCode;
 	@Column(name = "reportedDate")
 	private Date date;
+	
+	@Transient
+	private MultipartFile picture;
+	
 	public int getEventId() {
 		return eventId;
 	}
@@ -103,6 +109,12 @@ public class Event {
 				+ ", email=" + email + ", eventName=" + eventName + ", country=" + country + ", city=" + city
 				+ ", description=" + description + ", tag=" + tag + ", allertCode=" + allertCode + ", date=" + date
 				+ "]";
+	}
+	public MultipartFile getPicture() {
+		return picture;
+	}
+	public void setPicture(MultipartFile picture) {
+		this.picture = picture;
 	}
 	
 	

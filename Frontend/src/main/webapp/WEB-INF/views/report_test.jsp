@@ -59,7 +59,7 @@
 
 		<sf:form class="well form-horizontal"
 			action=" ${pageContext.request.contextPath}/report" method="POST"
-			id="contact_form" modelAttribute="event" enctype="multipart/form-data">
+			id="contact_form" modelAttribute="event">
 			<fieldset>
 
 				<!-- Form Name -->
@@ -99,8 +99,8 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-envelope"></i></span> <sf:input path="email"
-								placeholder="E-Mail Address" class="form-control" type="text"/>
+								class="glyphicon glyphicon-envelope"></i></span> <input name="email"
+								placeholder="E-Mail Address" class="form-control" type="text">
 						</div>
 					</div>
 				</div>
@@ -113,9 +113,9 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-exclamation-sign"></i></span> <sf:input
-								path="eventName" placeholder="Event name" class="form-control"
-								type="text"/>
+								class="glyphicon glyphicon-exclamation-sign"></i></span> <input
+								name="phone" placeholder="Event name" class="form-control"
+								type="text">
 						</div>
 					</div>
 				</div>
@@ -128,7 +128,7 @@
 					<div class="col-md-4 selectContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-list"></i></span> <sf:select path="country"
+								class="glyphicon glyphicon-list"></i></span> <select name="country"
 								class="form-control selectpicker">
 								<option value=" ">Please select the country</option>
 								<option value="United States">United States</option>
@@ -332,7 +332,7 @@
 								<option value="Yemen">Yemen</option>
 								<option value="Zambia">Zambia</option>
 								<option value="Zimbabwe">Zimbabwe</option>
-							</sf:select>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -345,8 +345,8 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-home"></i></span> <sf:input path="city"
-								placeholder="city" class="form-control" type="text"/>
+								class="glyphicon glyphicon-home"></i></span> <input name="city"
+								placeholder="city" class="form-control" type="text">
 						</div>
 					</div>
 				</div>
@@ -354,7 +354,7 @@
 				<!-- Clasification of event-->
 
 				<div class="form-group">
-					<label class="col-md-4 control-label">Tag</label>
+					<label class="col-md-4 control-label">Classification</label>
 					<div class="col-md-4 selectContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
@@ -373,17 +373,17 @@
 
 				<!-- allert code -->
 				<div class="form-group">
-					<label class="col-md-4 control-label">Allert Cod</label>
+					<label class="col-md-4 control-label">Tag</label>
 					<div class="col-md-4 selectContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-list"></i></span> <sf:select
+								class="glyphicon glyphicon-list"></i></span> <select
 								path="allertCode" class="form-control selectpicker">
 								<option value=" ">Select </option>
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
-							</sf:select>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -405,19 +405,17 @@
 				<!--Uploading picture-->
 
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="picture">Upload relevant
+					<label class="col-md-4 control-label">Upload relevant
 						picture</label>
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group test">
 
-							<sf:input type="file" class="filestyle" data-icon="false" path="picture"/>
+							<input type="file" class="filestyle" data-icon="false">
 						</div>
 					</div>
 				</div>
 
 				<div id="map" style="height: 500px;"></div>
-				
-				<div id="current">Nothing yet...</div>
 
 				<!-- registering event and sending email -->
 
@@ -451,7 +449,6 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPiDyVCof6f6ZsDHbZHMuD8ke4VwpzFFQ"></script>
-	<script src="${js}/map_tmp.js"></script>
-	
+	<script src="${js}/map.js"></script>
 </body>
 </html>

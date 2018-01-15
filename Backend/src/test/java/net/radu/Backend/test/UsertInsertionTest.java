@@ -24,9 +24,9 @@ public class UsertInsertionTest {
 		User user = new User();
 
 		//user.setuID(1);
-		user.setFirstName("Lebron");
-		user.setLastName("James");
-		user.setEmail("lj@gmail.com");
+		user.setFirstName("Tyrone");
+		user.setLastName("McQueen");
+		user.setEmail("queen@gmail.com");
 		
 		
 		SessionFactory sessionFactory = HibernateUtil.getSessionAnnotationFactory();
@@ -35,12 +35,12 @@ public class UsertInsertionTest {
 		// Table insertion
 		// Get Session
 		// start transaction
-//		 session.beginTransaction();
+		 session.beginTransaction();
 		// Save the Model object
-//		 session.save(user);
+		 session.save(user);
 		// //Commit transaction
-//		 session.getTransaction().commit();
-//		 System.out.println("User ID="+user.getuID());
+		 session.getTransaction().commit();
+		 System.out.println("User ID="+user.getuID());
 
 		// Table extraction
 
@@ -55,15 +55,26 @@ public class UsertInsertionTest {
 		
 		//start transaction
 		
-		session.beginTransaction();
+//		session.beginTransaction();
+//		
+//
+//		String selectUser = "FROM User WHERE email = :email";
+//		Query query = sessionFactory.getCurrentSession().createQuery(selectUser);
+//		
+//		query.setParameter("email", "beatrice.skittles@gmail.com");
+//		user = (User) query.uniqueResult();
+//		System.out.println("Datele userului cu mailul beatrice.skittles@gmail.com sunt: " + user);
+//		sessionFactory.close();
 		
-
-		String selectUser = "FROM User WHERE email = :email";
-		Query query = sessionFactory.getCurrentSession().createQuery(selectUser);
+//		List<User> admins = new ArrayList<>();
+//		session.beginTransaction();
+//		
+//		String selectUser = "FROM User WHERE isAdmin = :isAdmin";
+//		Query query = sessionFactory.getCurrentSession().createQuery(selectUser);
+//		query.setParameter("isAdmin", "true");
+//		admins =  query.list();
+//		System.out.println("Adminii sunt: " + admins);
+//		sessionFactory.close();
 		
-		query.setParameter("email", "beatrice.skittles@gmail.com");
-		user = (User) query.uniqueResult();
-		System.out.println("Datele userului cu mailul beatrice.skittles@gmail.com sunt: " + user);
-		sessionFactory.close();
 	}
 }

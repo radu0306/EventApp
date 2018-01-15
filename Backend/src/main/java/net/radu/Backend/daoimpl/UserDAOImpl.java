@@ -20,8 +20,9 @@ public class UserDAOImpl implements UserDAO {
 	SessionFactory sessionFactory = HibernateUtil.getSessionAnnotationFactory();
 
 	private static List<User> users = new ArrayList<>();
+	private static List<User> admins = new ArrayList<>();
 
-	// adding an user to tabel
+	// adding an user to database
 	@Override
 	public boolean add(User user) {
 		try {
@@ -130,6 +131,20 @@ public class UserDAOImpl implements UserDAO {
 		sessionFactory.close();
 		return user;
 		
+	}
+
+	@Override
+	public List<User> getAdmins() {
+		Session session = sessionFactory.getCurrentSession();
+		//start transaction
+		session.beginTransaction();
+		
+		String selectAdmin = "FROM User WHERE isAdmin = :isAdmin";
+		Query query = sessionFactory.getCurrentSession().createQuery(selectAdmin);
+		query.setParameter("isAdmin", "true");
+		admins =   query.list();
+		sessionFactory.close();
+		return admins;
 	}
 
 }

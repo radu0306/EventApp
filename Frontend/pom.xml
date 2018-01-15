@@ -20,14 +20,13 @@
 
 		<!-- Linking backend project -->
 		<!-- Added when back and front worked and will be added again -->
-		 <!--
+		<!--  
 		<dependency>
 			<groupId>net.radu</groupId>
 			<artifactId>Backend</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		-->
-
+-->
 
 		<!-- JAVE EE API -->
 		<!-- https://mvnrepository.com/artifact/javax/javaee-api -->
@@ -52,6 +51,12 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 

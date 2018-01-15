@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Transient;
+
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 @Repository("events")
 public class Event {
@@ -21,6 +24,9 @@ public class Event {
 	private int allertCode;
 	private Date date;
 
+	@Transient
+	private MultipartFile picture;
+	
 	private static List<Event> events = new ArrayList<>();
 
 
@@ -217,7 +223,48 @@ public class Event {
 		event.setDate(new Date(2001, 9, 11, 10, 28));
 		events.add(event);
 
+		event = new Event();
+		event.setEventId(5);
+		event.setUserFirstName("Tyrone");
+		event.setUserLastName("Queen");
+		event.setEmail("queen@gmail.com");
+		event.setDescription("Accident involvin huge number of cars on A1");
+		event.setEventName("Accident");
+		event.setTag("Accident");
+		event.setCountry("Romania");
+		event.setCity("Pitesti");
+		event.setAllertCode(1);
+		event.setDate(new Date(2018, 1, 13, 20, 00));
+		events.add(event);
 
+		event = new Event();
+		event.setEventId(6);
+		event.setUserFirstName("Alexandru");
+		event.setUserLastName("Vintila");
+		event.setEmail("avinti@gmail.com");
+		event.setDescription("A group of armed men are holding hostages in gara de nord");
+		event.setEventName("Hostage situation");
+		event.setTag("Terrorist_Act");
+		event.setCountry("Romania");
+		event.setCity("Bucharest");
+		event.setAllertCode(1);
+		event.setDate(new Date(2016, 11, 5, 14, 00));
+		events.add(event);
+
+		event = new Event();
+		event.setEventId(7);
+		event.setUserFirstName("Maria");
+		event.setUserLastName("Westminster");
+		event.setEmail("mwest@gmail.com");
+		event.setDescription("Huge landslide on county road A64 near York");
+		event.setEventName("Land slide");
+		event.setTag("Natural_Disaster");
+		event.setCountry("United Kingdoms");
+		event.setCity("York");
+		event.setAllertCode(2);
+		event.setDate(new Date(2016, 06, 04, 21, 17));
+		events.add(event);
+		
 		return events;
 	}
 
@@ -230,4 +277,20 @@ public class Event {
 				+ ", description=" + description + ", tag=" + tag + ", allertCode=" + allertCode + ", date=" + date
 				+ "]";
 	}
+
+
+
+	public MultipartFile getPicture() {
+		return picture;
+	}
+
+
+
+	public void setPicture(MultipartFile picture) {
+		this.picture = picture;
+	}
+
+
+
+
 }

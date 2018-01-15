@@ -14,4 +14,5 @@ public interface UserDAO {
 	boolean update(User user);
 	boolean delete(User user);
 	List<User> list();
+	List<User> getAdmins();
 }
