@@ -33,13 +33,13 @@ public class PageController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/report")
-	public ModelAndView report(){
-		ModelAndView mv = new ModelAndView("report");
-		mv.addObject("title","Report");
-		mv.addObject("userClickReport",true);
-		return mv;
-	}
+//	@RequestMapping(value = "/report")
+//	public ModelAndView report(){
+//		ModelAndView mv = new ModelAndView("report");
+//		mv.addObject("title","Report");
+//		mv.addObject("userClickReport",true);
+//		return mv;
+//	}
 	
 	@RequestMapping(value = "/reportedEvents")
 	public ModelAndView reportedEvents(){

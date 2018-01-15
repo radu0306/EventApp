@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
 <spring:url var="css" value="/resources/css" />
 <spring:url var="js" value="/resources/js" />
@@ -56,8 +57,9 @@
 
 	<div class="container">
 
-		<form class="well form-horizontal" action=" ${pageContext.request.contextPath}/myservlet" method="post"
-			id="contact_form">
+		<sf:form class="well form-horizontal"
+			action=" ${pageContext.request.contextPath}/myservlet" method="post"
+			id="contact_form" modelAttribute="event">
 			<fieldset>
 
 				<!-- Form Name -->
@@ -70,8 +72,9 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-user"></i></span> <input name="first_name"
-								placeholder="First Name" class="form-control" type="text">
+								class="glyphicon glyphicon-user"></i></span>
+							<sf:input path="userFirstName" placeholder="First Name"
+								class="form-control" type="text" />
 						</div>
 					</div>
 				</div>
@@ -83,8 +86,9 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-user"></i></span> <input name="last_name"
-								placeholder="Last Name" class="form-control" type="text">
+								class="glyphicon glyphicon-user"></i></span>
+							<sf:input path="userLastName" placeholder="Last Name"
+								class="form-control" type="text" />
 						</div>
 					</div>
 				</div>
@@ -354,13 +358,13 @@
 					<div class="col-md-4 selectContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-list"></i></span> <select
-								name="classification" class="form-control selectpicker">
+								class="glyphicon glyphicon-list"></i></span> <sf:select
+								path="tag" class="form-control selectpicker">
 								<option value=" ">Classify the event</option>
 								<option value="United States">Natural Disaster</option>
 								<option value="Canada">Terrorist Act</option>
 								<option value="United Kingdom">Accident</option>
-							</select>
+							</sf:select>
 						</div>
 					</div>
 				</div>
@@ -369,22 +373,17 @@
 
 				<!-- allert code -->
 				<div class="form-group">
-					<label class="col-md-4 control-label">Alert code</label>
-					<div class="col-md-4">
-						<div class="radio">
-							<label> <input type="radio" name="hosting" value="yes" />
-								1 (Low threat)
-							</label>
-						</div>
-						<div class="radio">
-							<label> <input type="radio" name="hosting" value="no" />
-								2 (Medium threat)
-							</label>
-						</div>
-						<div class="radio">
-							<label> <input type="radio" name="hosting" value="no" />
-								3 (High threat)
-							</label>
+					<label class="col-md-4 control-label">Tag</label>
+					<div class="col-md-4 selectContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-list"></i></span> <select
+								path="allertCode" class="form-control selectpicker">
+								<option value=" ">Select </option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -397,13 +396,13 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-pencil"></i></span>
-							<textarea class="form-control" name="comment"
-								placeholder="Event Description"></textarea>
+							<sf:textarea class="form-control" path="description"
+								placeholder="Event Description" />
 						</div>
 					</div>
 				</div>
 
-				<!--Uploadinc picture-->
+				<!--Uploading picture-->
 
 				<div class="form-group">
 					<label class="col-md-4 control-label">Upload relevant
@@ -419,22 +418,23 @@
 				<div id="map" style="height: 500px;"></div>
 
 				<!-- registering event and sending email -->
-				
+
 				<div class="form-group button">
 					<label class="col-md-5 control-label"></label>
 					<div class="col-md-4" style="padding-bottom: 50px;">
-					
-						<button type="submit" name="button" value="sendEmail" class="btn btn-warning"
+
+						<button type="submit" name="button" value="sendEmail"
+							class="btn btn-warning"
 							onclick="document.forms[0].action = '/Frontend'; return true;">
 							Send <span class="glyphicon glyphicon-send"></span>
 						</button>
 					</div>
 				</div>
-				                  
+
 			</fieldset>
-		</form>
+		</sf:form>
 	</div>
-	
+
 	<!-- FOOTER -->
 	<%@include file="./shared/footer.jsp"%>
 
